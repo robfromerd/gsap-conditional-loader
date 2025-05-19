@@ -8,7 +8,7 @@ License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 Loads GSAP core *and* any GSAP plugins you list, but **only** on content in the **animated** category.  
-Ships ready-made CSS classes—plus optional **`rotate-X`** modifiers—for character/line SplitText, fade-ups, scale-ins, and MorphSVG scroll animations.
+Ships ready-made CSS classes—plus optional **`rotate-X`** modifiers—for character/line SplitText, fade-ups, scale-ins, and MorphSVG scroll animations. NOTE: install an SVG support plugin to use SVG. 
 
 == Description ==
 
