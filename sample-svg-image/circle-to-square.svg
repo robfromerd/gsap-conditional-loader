@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 135 135"
+     class="gsap-morph" data-delay="0.75">
+
+  <!-- visible circle -->
+  <path class="morph-from"
+        fill="#66ccff"
+        d="M67.5 0
+           A67.5 67.5 0 1 1 67.5 135
+           A67.5 67.5 0 1 1 67.5 0
+           Z" />
+
+  <!-- hidden square template -->
+  <path class="morph-to"
+        fill="#66ccff"
+        d="M0 0 H135 V135 H0 Z"
+        style="display:none" />
+</svg>

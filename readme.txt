@@ -8,7 +8,7 @@ License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 Loads GSAP core *and* any GSAP plugins you list, but **only** on content in the **animated** category.  
-Ships ready-made CSS classes—plus optional **`rotate-X`** modifiers—for character/line SplitText, fade-ups, scale-ins, and MorphSVG scroll animations. NOTE: install an SVG support plugin to use SVG. 
+Ships ready-made CSS classes—plus optional **`rotate-X`** modifiers—for character/line SplitText, fade-ups, scale-ins, and MorphSVG scroll animations (use HTML block for inline SVG, not image insertion for the SVG). NOTE: install an SVG support plugin to use SVG. 
 
 == Description ==
 
@@ -71,7 +71,7 @@ Ships ready-made CSS classes—plus optional **`rotate-X`** modifiers—for char
   Zoom-pop entrance effect!
 </p>
 
-<!-- 5. MorphSVG demo with optional delay -->
+<!-- 5. MorphSVG demo with optional delay, use HTML block for inline SVG, not image insertion -->
 <svg class="gsap-morph" data-delay="0.5"
      xmlns="http://www.w3.org/2000/svg"
      width="140" height="140" viewBox="0 0 140 140">
