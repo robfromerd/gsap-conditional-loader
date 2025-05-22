@@ -1,11 +1,16 @@
 <?php
 /**
  * Plugin Name: GSAP Conditional Loader (All-Plugin Edition)
- * Description:	Loads GSAP core + any GSAP plugins you list, but only
- *              on content in the “animated” category. See readme.txt for instructions. 
- * Version:		1.2.2
- * Author:		Rob Goldberg
- * License:		GPL-2.0+
+ * Plugin URI: https://github.com/robfromerd/gsap-conditional-loader
+ * Description: Loads GSAP core + any GSAP plugins you list, but only on content in the “animated” category. See readme.md for instructions.
+ * Version: 1.2.2
+ * Author: Rob Goldberg
+ * Author URI: https://profiles.wordpress.org/robfromerd
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Requires at least: 6.0
+ * Requires PHP: 8.0
+ * Text Domain: gsap-conditional-loader
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -20,14 +25,14 @@ add_action( 'wp_enqueue_scripts', function () {
 		is_category( 'animated' );
 
 	if ( ! $needs_gsap ) {
-		return;                                  // nothing to enqueue
+		return; // nothing to enqueue
 	}
 
 	/* --------------------------------------------------------------
 	 * 2. CDN + version (keep all files on the same version!)
 	 * ------------------------------------------------------------ */
 	$ver = '3.13.0';
-	$cdn = "https://cdn.jsdelivr.net/npm/gsap@$ver/dist/"; // or unpkg
+	$cdn = "https://cdn.jsdelivr.net/npm/gsap@$ver/dist/";
 
 	/* --------------------------------------------------------------
 	 * 3. Core GSAP
@@ -43,7 +48,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	/* --------------------------------------------------------------
 	 * 4. Plug-ins you want to add (edit this list!)
 	 * ------------------------------------------------------------ */
-	$plugins = [
+	$plugins = apply_filters( 'gsapcl_plugins', [
 		'ScrollTrigger',
 		'ScrollToPlugin',
 		'Draggable',
@@ -51,14 +56,14 @@ add_action( 'wp_enqueue_scripts', function () {
 		'SplitText',
 		'ScrollSmoother',
 		// add/remove names as needed
-	];
+	] );
 
 	foreach ( $plugins as $plugin ) {
-		$handle = 'gsap-' . strtolower( $plugin );         // e.g. gsap-scrolltrigger
+		$handle = 'gsap-' . strtolower( $plugin );
 		wp_enqueue_script(
 			$handle,
 			$cdn . $plugin . '.min.js',
-			[ 'gsap' ],                                   // depend on core
+			[ 'gsap' ],
 			$ver,
 			true
 		);
@@ -85,6 +90,5 @@ add_action( 'wp_enqueue_scripts', function () {
  * Runs early on init so the editor UI and queries pick it up.
  */
 add_action( 'init', function () {
-    // Attach the core taxonomy “category” to the post-type “page”
-    register_taxonomy_for_object_type( 'category', 'page' );
-}, 5 );   // priority 5 → before the editor loads
+	register_taxonomy_for_object_type( 'category', 'page' );
+}, 5 );
